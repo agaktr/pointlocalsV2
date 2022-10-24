@@ -1,19 +1,244 @@
 {% extends 'base.front.html.twig' %}
 
-{% block title %}Hello dsaController!{% endblock %}
+{% block title %}Find Business locations around you{% endblock %}
+
+{% block description %}Search for local business in Hyderabad like Hospitals, Groceries, Banks, Restaurants, Salons, Electronic, Hardware, Footwear stores and many more. Point Locals aims to provide all the locations around you.{% endblock %}
 
 {% block body %}
-    <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    </style>
+    <section class="home-page-intro">
 
-    <div class="example-wrapper">
+        <div id="stripes" aria-hidden="true"> <span></span> <span></span> <span></span> <span></span> <span></span></div>
 
-        This friendly message is coming from:
-        <ul>
-            <li>Your controller at <code><a href="{{ '/home/symfony/public_html/symfony/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-            <li>Your template at <code><a href="{{ '/home/symfony/public_html/symfony/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
-        </ul>
-    </div>
+        <div class="opener-image relative z-index-1">
+            <img alt="Opener Image" src="{{ asset('img/PointlocalsOpener.svg') }}" height="auto" width="auto">
+        </div>
+
+        <div class="opener-text row">
+
+            <div class="container">
+
+                <div class="col l9 s12">
+
+                    <h1>
+                        Point Locals - The Business Directory
+                    </h1>
+
+                    <p>
+                        Search for local business in Hyderabad like Hospitals, Groceries, Banks, Restaurants, Salons, Electronic, Hardware, Footwear stores and many more. Point Locals aims to provide all the locations around you.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="home-page-search">
+
+                <div class="container relative z-index-2">
+
+                    <div class="row no-margin-bottom search-bar-wrapper">
+
+                        <div class="col l8 s12 search-col">
+
+                            <div class="search-input-wrapper">
+
+                                <i class="fas fa-search"></i>
+
+
+                                <input type="text" spellcheck="false" name="search" id="search" placeholder="Search Anything Anywhere" autocomplete="off" autofocus>
+                                {#<div class="did-you-mean-wrapper">#}
+                                {#<span class="did-you-mean-span">Did you mean: </span><span id="suggestionLink"></span>#}
+                                {#</div>#}
+                            </div>
+                            <div class="autosuggest"><ul></ul></div>
+                            <div class="loader search-loader"></div>
+                        </div>
+
+                        <div class="col l4 s12">
+
+                            <div class="search-input-wrapper">
+
+                                <img alt="Search pointlocals" class="pl-icon-search" src="{{ asset('img/PointlocalsIcon.svg') }}">
+
+                                <input data-controller="area-search" data-action="click->area-search#clear keyup->area-search#search" class="area-search-input" spellcheck="false" name="area-search-input" id="area-search-input" type="text" value="Hyderabad, Telangana" placeholder="Enter the Area" >
+                                {#                                <select id="city_select">#}
+                                {#                                    <option value="" selected>Your location <i class="fas fa-caret-down right"></i></option>#}
+                                {#                                    {% for key,city in cities %}#}
+                                {#                                        <option value="{{ city.AreaLat }},{{ city.AreaLong }}">{{ city.Name }}</option>#}
+                                {#                                    {% endfor %}#}
+                                {#                                </select>#}
+
+                            </div>
+
+                        </div>
+
+                        {#<div class="col l1 s12">#}
+
+                        {#<div class="search-button-wrapper">#}
+                        {#<div class="btn btn-large search-btn">#}
+
+                        {#<i class="material-icons">search</i>#}
+
+                        {#</div>#}
+                        {#</div>#}
+
+                        {#</div>#}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="features-overview row no-margin-bottom relative" id="searchesRowTrigger">
+
+        <div id="stripes" class="white" aria-hidden="true"> <span></span> <span></span> <span></span> <span></span> <span></span></div>
+
+        <div class="container relative z-index-1">
+
+            <div class="col s12 center margin-pop-search">
+
+                <h2>
+                    Popular Searches
+                </h2>
+
+                <p>
+                    Click on a box below, and we will quickly search for the selected businesses within your location.
+                </p>
+
+            </div>
+
+            <div class="searches-row" id="boxes">
+
+                <div class="searches-col">
+
+                    {% for name,val in pops %}
+                        <div class="col l2 m4 s4">
+
+                            <a class="quick-search-link" href="#" data-search="{{ name }}" data-id="{{ name }}">
+
+                                <div class="quick-search-item">
+
+                                    <div class="search-icon-wrapper">
+                                        <img width="60" height="60" class="ps-img" loading="lazy" src="{{ asset('img/popularsearches/'~val) }}" alt="Quick Search Link">
+                                    </div>
+                                    <div class="search-name">{{ name }}</div>
+
+                                </div>
+                            </a>
+
+                        </div>
+                    {% endfor %}
+                </div>
+
+
+                {#<div class="col l6 s12 intro-image">#}
+
+                {#<img src="{{ asset('img/pointlocals---Logo-Design.png') }}">#}
+
+                {#</div>#}
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="latestUpdates" class="row no-margin-bottom relative">
+
+        <div id="stripes" class="white" aria-hidden="true"> <span></span> <span></span> <span></span> <span></span> <span></span></div>
+
+        <div class="container relative z-index-1">
+
+            <div class="col l5 s12">
+                <img alt="India map" width="492" height="540" class="india-map" src="{{ asset('img/IndiaMap.svg') }}">
+            </div>
+
+            <div class="col l7 s12">
+
+                <h3>
+                    Latest Updates
+                </h3>
+
+                <p>
+                    View the latest changes on the pointlocals database
+                </p>
+
+                <div class="col l12 s12 notif-col relative">
+
+                    <svg id="iconDecor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 62 74" xml:space="preserve">
+                    <g>
+                        <g>
+                            <path style="fill:#cea3cd;" d="M42.5,20c-6.4-6.4-16.9-6.4-23.3,0h0c-6.4,6.4-6.4,16.9,0,23.3h0c6.4,6.4,16.9,6.4,23.3,0
+                                C48.9,36.9,48.9,26.4,42.5,20z"/>
+                            <path style="fill:#cea3cd;" d="M51.8,10.7C40.2-0.8,21.4-0.8,9.9,10.7c-5.6,5.6-8.7,13-8.7,20.9c0,3,0.4,5.9,1.3,8.6
+                                c1.4,4.6,3.9,8.8,7.4,12.3l20.3,20.3l5.3-5.3L15.2,47.3c-4.2-4.2-6.5-9.8-6.5-15.7S11,20.1,15.2,16c8.6-8.6,22.7-8.6,31.3,0
+                                c4.2,4.2,6.5,9.8,6.5,15.7s-2.3,11.5-6.5,15.7c-2.5,2.5-5.5,4.3-8.8,5.4l5.7,5.7c3.1-1.5,6-3.4,8.4-5.9c5.6-5.6,8.7-13,8.7-20.9
+                                S57.4,16.3,51.8,10.7z"/>
+                        </g>
+                    </g>
+                    </svg>
+
+                    <div class="notif-ul">
+                        <ul>
+                            <li>Check whether your business location is updated.</li>
+                            <li>Hundreds of business locations are being updated every day.</li>
+                            <li>Point Locals displays all business locations within Hyderabad, Telangana, India.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="overview" class="relative">
+
+        <div id="stripes" class="" aria-hidden="true"> <span></span> <span></span> <span></span> <span></span> <span></span></div>
+
+        <div class="opener-text row">
+
+            <div class="container">
+
+                <div class="flex flex-center">
+
+                    <div class="col l7 m7 s12">
+
+                        <h4>
+                            Advertise your location to the top listing
+                        </h4>
+
+                        <p>
+                            Never miss your clients from missing your business.
+                            <br>Get a notified Green Pointer and grab the top listing.
+                            <br>Multiply your visibility and more calls and clicks.
+                            <br>Get multiple clicks, No per Click Charge.
+                        </p>
+
+
+                    </div>
+
+                    <div class="col offset-l1 l4 m5 s12">
+                        {#                        <img loading="lazy" alt="Illustration image" class="illustration" src="{{ asset('img/Pointlocals Ads.svg') }}">#}
+                        <img width="100%" loading="lazy" alt="Illustration image" class="illustration" src="{{ asset('img/ads-home.png') }}">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
 {% endblock %}

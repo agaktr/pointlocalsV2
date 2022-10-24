@@ -23,7 +23,10 @@
         {% block header %}
             {{ include('header/header.front.html.twig')  }}
         {% endblock %}
-        {% block body %}{% endblock %}
+        <main>
+            <span class="detect-mobile"></span>
+                {% block body %}{% endblock %}
+        </main>
         {% block footer %}
             {{ include('footer/footer.front.html.twig')  }}
         {% endblock %}
