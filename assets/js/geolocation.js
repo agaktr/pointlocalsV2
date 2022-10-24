@@ -378,9 +378,9 @@ function aptoGeoLocation(options) {
             position = positionDefault;
         }
 
-        console.log(this)
+        console.log(this.A)
 
-        return this;
+        return this.A;
     };
 
     if (settings.start === true){
