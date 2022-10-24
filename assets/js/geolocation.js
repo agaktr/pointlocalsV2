@@ -209,7 +209,7 @@ export function aptoGeoLocation(options) {
             }
 
             checkPositionBounds();
-
+console.log('hi')
             isFinished = true;
     }
 
