@@ -14,10 +14,12 @@ function doTheInit() {
         prompt : false
     });
     console.log(gps)
-    if (gps.isFinished() === false) {//we want it to match
-        setTimeout(doTheInit,1);//wait 1 millisecnds then recheck
-        return false;
-    }
+    console.log(gps.isFinished)
+    console.log(gps.isFinished())
+    // if (gps.isFinished() === false) {//we want it to match
+    //     setTimeout(doTheInit,1);//wait 1 millisecnds then recheck
+    //     return false;
+    // }
 
     /**
      * Initialize materialize stuff
