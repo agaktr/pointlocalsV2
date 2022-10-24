@@ -528,10 +528,10 @@ export function gps() {
             }
         }
     })();
-    window.gps({
-        env : 'dev',
-        prompt : false
-    })
+    // window.gps({
+    //     env : 'dev',
+    //     prompt : false
+    // })
 }
 
 /**

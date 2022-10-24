@@ -1,7 +1,10 @@
 import { gps } from "./js/utility";
 
 
-console.log(window.gps)
+window.gps({
+    env : 'dev',
+    prompt : false
+})
 
 /**
  * Initialize materialize stuff
