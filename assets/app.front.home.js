@@ -1,10 +1,25 @@
-import { gps } from "./js/utility";
-
-let A = gps()
-
-console.log(A)
+import './geolocation'
 
 /**
- * Initialize materialize stuff
+ * The main function that starts all the execution
+ * when we have all needed info
  */
-M.AutoInit()
+function doTheInit() {
+    /**
+     * Wait until GPS inspection is finished
+     */
+    console.log(A)
+    if (A.aptoGPS.isFinished() === false) {//we want it to match
+        setTimeout(doTheInit,1);//wait 1 millisecnds then recheck
+        return false;
+    }
+
+    /**
+     * Initialize materialize stuff
+     */
+    M.AutoInit()
+}
+/**
+ * Start execution
+ */
+doTheInit();
