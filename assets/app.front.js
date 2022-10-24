@@ -10,3 +10,4 @@ import './styles/app.front.css';
 
 // start the Stimulus application
 import './bootstrap';
+import '@materializecss/materialize/dist/js/materialize.js';
