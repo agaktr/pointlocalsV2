@@ -144,12 +144,13 @@ export function viewportFix() {
  */
 
 export function gps() {
+
+    let A = {}
     (function doTheThing() {
         // Act on either the window.console, or the normal console.
 
         function aptoGeoLocation(options) {
 
-            let this = {}
             /**
              * Private Variable initialization
              */
@@ -532,11 +533,15 @@ export function gps() {
             }
         }
 
-        window.gps = aptoGeoLocation({
+        A.gps = aptoGeoLocation({
             env : 'dev',
             prompt : false
         })
+
+
     })();
+
+    return A;
 }
 
 /**

@@ -1,8 +1,8 @@
 import { gps } from "./js/utility";
 
-gps()
+let A = gps()
 
-console.log(window.gps)
+console.log(A)
 
 /**
  * Initialize materialize stuff
