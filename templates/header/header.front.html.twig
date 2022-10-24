@@ -7,7 +7,7 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li class="cta-menu-item"><a href="{{ path('app_home') }}" data-target="loginModal" class="modal-trigger add-location-menu-item"><i class="material-icons">add_location</i>Add Location</a></li>
             <li class="login-menu-item {% if app.user is not null %}hide{% endif %}"><a href="#"><i class="fas fa-sign-in-alt"></i>Sign In</a></li>
-            <li class="user-menu-item {% if app.user is not null %}hide{% endif %}" {% if app.user is not null %}data-login-type="{{ user.LoginType }}"{% endif %}>
+            <li class="user-menu-item {% if app.user is null %}hide{% endif %}" {% if app.user is not null %}data-login-type="{{ user.LoginType }}"{% endif %}>
                 <a class="dropdown-trigger" href="#!" data-target="userMenu">
                     <i class="material-icons">account_circle</i>
                     <span id="userName">{% if app.user is not null %}{{ user.FirstName }} {{ user.LastName }}{% endif %}</span>
