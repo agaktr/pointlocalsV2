@@ -6,7 +6,7 @@
  * and fallback IP based API.
  */
 
-const gps = {
+let gps = {
     defaults : {
         //Current environment - dev provides log information
         env : 'prod',
