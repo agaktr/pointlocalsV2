@@ -7,6 +7,8 @@
  */
 export function aptoGeoLocation(options) {
 
+    let gps;
+
     /**
      * Private Variable initialization
      */
@@ -45,8 +47,7 @@ export function aptoGeoLocation(options) {
         //IP or Navigator fetch type
         isAccurate = false,
         //If the invoke permission function is triggered
-        invoke = false,
-        gps;
+        invoke = false;
     /**
      * Disallow multiple instances of the plugin to run
      * in order to avoid duplicate instances and requests
