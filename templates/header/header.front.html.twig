@@ -56,29 +56,29 @@
             </a>
 
             {#<a href="#"><img alt="user-image" id="mobileUserImage" class="circle" src="{{ asset('img/place.png') }}"></a>#}
-            <a href="#"><span id="mobileUserName" class="white-text name">{% if user.FirstName %} {{ user.FirstName }} {{ user.LastName }} {% else %} Anonymous User {% endif %}</span></a>
-            <a href="#"><span id="mobileUserEmail" class="white-text email">{% if user.Email %} {{ user.Email }} {% else %} Not logged in {% endif %}</span></a>
+            <a href="#"><span id="mobileUserName" class="white-text name">{% if app.user is not null %} {{ user.FirstName }} {{ user.LastName }} {% else %} Anonymous User {% endif %}</span></a>
+            <a href="#"><span id="mobileUserEmail" class="white-text email">{% if app.user is not null %} {{ user.Email }} {% else %} Not logged in {% endif %}</span></a>
 
         </div>
     </li>
 
     <li class="cta-menu-item"><a data-target="loginModal" class="modal-trigger add-location-menu-item" href="{{ path('app_home') }}"><i class="material-icons">add_location</i>Add Location</a></li>
 
-    <li class="login-menu-item {% if user.Id != 0 %}hide{% endif %}"><a class="waves-effect" href="#!"><i class="fas fa-sign-in-alt"></i>Sign In</a></li>
+    <li class="login-menu-item {% if app.user is not null != 0 %}hide{% endif %}"><a class="waves-effect" href="#!"><i class="fas fa-sign-in-alt"></i>Sign In</a></li>
 
-    <li class="user-menu-item {% if user.Id == 0 %}hide{% endif %}"><div class="divider"></div></li>
+    <li class="user-menu-item {% if app.user is not null == 0 %}hide{% endif %}"><div class="divider"></div></li>
 
-    <li class="user-menu-item {% if user.Id == 0 %}hide{% endif %}">
+    <li class="user-menu-item {% if app.user is not null == 0 %}hide{% endif %}">
         <a href="{{ path('app_home') }}"><i class="material-icons">location_city</i>Dashboard</a>
     </li>
 
-    <li class="user-menu-item {% if user.Id == 0 %}hide{% endif %}">
+    <li class="user-menu-item {% if app.user is not null == 0 %}hide{% endif %}">
         <a href="{{ path('app_home') }}"><i class="material-icons">settings</i>Settings</a>
     </li>
 
-    <li class="user-menu-item {% if user.Id == 0 %}hide{% endif %} divider"></li>
+    <li class="user-menu-item {% if app.user is not null == 0 %}hide{% endif %} divider"></li>
 
-    <li class="user-menu-item {% if user.Id == 0 %}hide{% endif %}">
+    <li class="user-menu-item {% if app.user is not null == 0 %}hide{% endif %}">
         <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i>Log Out</a>
     </li>
 
