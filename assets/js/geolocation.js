@@ -202,15 +202,15 @@ export function aptoGeoLocation(options) {
         //
         //         isFinished = true;
         //     })
-            //  isAccurate = false;
-            // position = {
-            //     lat: 17.40010939119478,
-            //     lng: 78.48258630887469
-            // }
-            //
-            // checkPositionBounds();
-            //
-            // isFinished = true;
+             isAccurate = false;
+            position = {
+                lat: 17.40010939119478,
+                lng: 78.48258630887469
+            }
+
+            checkPositionBounds();
+
+            isFinished = true;
     }
 
     let checkPositionBounds = function () {
