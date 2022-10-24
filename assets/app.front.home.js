@@ -13,8 +13,8 @@ function doTheInit() {
         env : 'prod',
         prompt : false
     });
-    console.log(gps)
-    console.log(gps.isFinished)
+    // console.log(gps)
+    // console.log(gps.isFinished)
     console.log(gps.isFinished())
     if (gps.isFinished() === false) {//we want it to match
         setTimeout(doTheInit,1);//wait 1 millisecnds then recheck
