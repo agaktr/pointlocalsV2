@@ -149,7 +149,7 @@ export function gps() {
 
         // Act on either the window.console, or the normal console.
 
-        function aptoGeoLocation(options) {
+        let george = function aptoGeoLocation(options) {
 
             /**
              * Private Variable initialization
@@ -533,7 +533,7 @@ export function gps() {
             }
         }
 
-        A.gps = aptoGeoLocation({
+        A.gps = george({
             env : 'dev',
             prompt : false
         })
