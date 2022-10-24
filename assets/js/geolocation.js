@@ -379,6 +379,8 @@ console.log('hi')
             position = positionDefault;
         }
 
+        console.log(gps)
+
         return gps;
     };
 
