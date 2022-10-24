@@ -1,4 +1,4 @@
-import './geolocation'
+import './js/geolocation'
 
 /**
  * The main function that starts all the execution
