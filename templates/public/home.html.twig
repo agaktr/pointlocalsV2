@@ -4,6 +4,11 @@
 
 {% block description %}Search for local business in Hyderabad like Hospitals, Groceries, Banks, Restaurants, Salons, Electronic, Hardware, Footwear stores and many more. Point Locals aims to provide all the locations around you.{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('app.front.home') }}
+{% endblock %}
+
 {% block body %}
     <section class="home-page-intro">
 
