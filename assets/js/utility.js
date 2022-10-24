@@ -149,6 +149,7 @@ export function gps() {
 
         function aptoGeoLocation(options) {
 
+            let this = {}
             /**
              * Private Variable initialization
              */
@@ -193,12 +194,12 @@ export function gps() {
              * in order to avoid duplicate instances and requests
              */
 
-            // console.log(this)
-            //
-            // if (this.length > 1) {
-            //
-            //     return null;
-            // }
+            console.log(this)
+
+            if (this.length > 1) {
+
+                return null;
+            }
 
             /**
              * Navigator Service Status
