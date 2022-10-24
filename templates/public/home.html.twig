@@ -116,7 +116,7 @@
 
                 <div class="searches-col">
 
-                    {% for name,val in pops %}
+                    {% for name,val in constant('POPULAR_SEARCHES',constants) %}
                         <div class="col l2 m4 s4">
 
                             <a class="quick-search-link" href="#" data-search="{{ name }}" data-id="{{ name }}">
