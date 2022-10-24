@@ -45,12 +45,13 @@ export function aptoGeoLocation(options) {
         //IP or Navigator fetch type
         isAccurate = false,
         //If the invoke permission function is triggered
-        invoke = false;
+        invoke = false,
+        gps;
     /**
      * Disallow multiple instances of the plugin to run
      * in order to avoid duplicate instances and requests
      */
-    if (this.length > 1) {
+    if (gps.length > 1) {
 
         return null;
     }
@@ -59,7 +60,7 @@ export function aptoGeoLocation(options) {
      * Navigator Service Status
      * @returns {boolean}
      */
-    this.serviceIsActive = function() {
+    gps.serviceIsActive = function() {
 
         return serviceIsActive;
     }
