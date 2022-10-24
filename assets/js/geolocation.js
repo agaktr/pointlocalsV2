@@ -381,7 +381,7 @@ console.log('hi')
 
         console.log(gps)
 
-        return gps;
+        return gps.instance;
     };
 
     if (settings.start === true){
