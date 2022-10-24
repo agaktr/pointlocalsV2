@@ -184,35 +184,35 @@ function aptoGeoLocation(options) {
      */
     let handleGeoError = function() {
 
-        fetch('https://api.ipdata.co/?api-key='+settings.apikey)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (settings.env === 'dev'){
+        // fetch('https://api.ipdata.co/?api-key='+settings.apikey)
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data)
+        //         if (settings.env === 'dev'){
+        //
+        //             console.log('aptoGeoLocation: DEBUG - handleGeoError');
+        //             console.log(data);
+        //         }
+        //
+        //         isAccurate = false;
+        //         position = {
+        //             lat: parseFloat(data.latitude),
+        //             lng: parseFloat(data.longitude)
+        //         }
+        //
+        //         checkPositionBounds();
+        //
+        //         isFinished = true;
+        //     })
+             isAccurate = false;
+            position = {
+                lat: 17.40010939119478,
+                lng: 78.48258630887469
+            }
 
-                    console.log('aptoGeoLocation: DEBUG - handleGeoError');
-                    console.log(data);
-                }
+            checkPositionBounds();
 
-                isAccurate = false;
-                position = {
-                    lat: parseFloat(data.latitude),
-                    lng: parseFloat(data.longitude)
-                }
-
-                checkPositionBounds();
-
-                isFinished = true;
-            })
-            //  isAccurate = false;
-            // position = {
-            //     lat: 17.40010939119478,
-            //     lng: 78.48258630887469
-            // }
-            //
-            // checkPositionBounds();
-            //
-            // isFinished = true;
+            isFinished = true;
     }
 
     let checkPositionBounds = function () {
