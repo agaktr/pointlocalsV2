@@ -3,7 +3,7 @@ import { gps } from './js/geolocation';
 
 gps.initialize({
     env : 'dev',
-    prompt : false
+    prompt : true
 })
 /**
  * The main function that starts all the execution
