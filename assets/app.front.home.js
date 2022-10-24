@@ -1,5 +1,7 @@
 import { gps } from "./js/utility";
 
+gps()
+
 console.log(window.gps)
 
 /**
