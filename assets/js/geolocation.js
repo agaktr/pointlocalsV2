@@ -378,6 +378,8 @@ function aptoGeoLocation(options) {
             position = positionDefault;
         }
 
+        console.log(this)
+
         return this;
     };
 
