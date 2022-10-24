@@ -167,24 +167,24 @@ let gps = {
 
         navigator.geolocation.getCurrentPosition(function (devicePos) {
 
-            if (this.settings.env === 'dev'){
+            if (_this.settings.env === 'dev'){
                 console.log('aptoGeoLocation: DEBUG - makePositionQuery');
                 console.log(devicePos);
             }
 
-            this.isAccurate = true;
-            this.position = {
+            _this.isAccurate = true;
+            _this.position = {
                 lat: parseFloat(devicePos?.coords.latitude),
                 lng: parseFloat(devicePos?.coords.longitude)
             }
 
-            this.checkPositionBounds();
+            _this.checkPositionBounds();
 
             //inject granted status as this is an if dependent variable
             //,so we make sure it's in place for the prompt statement
-            this.permissionsStatus = 'granted';
+            _this.permissionsStatus = 'granted';
 
-            if (this.invoke === true){
+            if (_this.invoke === true){
 
                 let url = new URL(window.location.href);
                 let params = url.searchParams;
@@ -204,10 +204,10 @@ let gps = {
 
             }
 
-            this.isFinished = true;
+            _this.isFinished = true;
         },function () {
 
-            this.handleGeoError();
+            _this.handleGeoError();
         });
     },
     initialize:function(options) {
