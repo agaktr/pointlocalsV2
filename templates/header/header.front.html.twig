@@ -1,0 +1,201 @@
+<header>
+<nav>
+
+    <div class="nav-wrapper" data-page="{{ currentPage }}">
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <a href="{{ path('app_home') }}" class="brand-logo"><img alt="Point Locals Logo" width="110" height="44" src="{{ asset('img/Pointlocals-Logo.svg') }}"></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li class="cta-menu-item"><a href="{{ path('add-location-page') }}" data-target="loginModal" class="modal-trigger add-location-menu-item"><i class="material-icons">add_location</i>Add Location</a></li>
+            <li class="login-menu-item {% if user.Id != 0 %}hide{% endif %}"><a href="#"><i class="fas fa-sign-in-alt"></i>Sign In</a></li>
+            <li class="user-menu-item {% if user.Id == 0 %}hide{% endif %}" {% if user.Id != 0 %}data-login-type="{{ user.LoginType }}"{% endif %}><a class="dropdown-trigger" href="#!" data-target="userMenu"><i class="material-icons">account_circle</i><span id="userName">{{ user.FirstName }} {{ user.LastName }}</span> <i class="material-icons dropdown-icon">arrow_drop_down</i></a></li>
+        </ul>
+        <a href="#iconDecor" class="notif-class right" ><img width="30" height="64" alt="Notification icon" loading="lazy" class="" src="{{ asset('img/popularsearches/Notification orange.svg') }}"></a>
+    </div>
+</nav>
+
+
+<ul id="userMenu" class="dropdown-content">
+    <li>
+        <a href="{{ path('my-locations-page') }}"><i class="material-icons">location_city</i>Dashboard</a>
+    </li>
+    <li>
+        <a href="{{ path('user-settings') }}"><i class="material-icons">settings</i>Settings</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+        <a href="#" class="logout-btn">Log Out</a>
+    </li>
+</ul>
+
+{% if currentPage == 'terms_and_conditions' or currentPage == 'disclaimer_page' or currentPage == 'cookies_page' or currentPage == 'refund_page' or currentPage == 'privacy_page' or currentPage == 'contact_us_page' %}
+<ul class="sidenav" id="mobile-demo" >
+
+    <h4>Terms of Service</h4>
+    <li class="{% if currentPage == 'terms_and_conditions' %}current-menu-item{% endif %}"><a class="" href="{{ path('terms_and_conditions') }}">Terms</a></li>
+    <li class="{% if currentPage == 'disclaimer_page' %}current-menu-item{% endif %}"><a class="" href="{{ path('disclaimer_page') }}">Disclaimer</a></li>
+    <li class="{% if currentPage == 'cookies_page' %}current-menu-item{% endif %}"><a class="" href="{{ path('cookies_page') }}">Cookies Policy</a></li>
+    <li class="{% if currentPage == 'refund_page' %}current-menu-item{% endif %}"><a class="" href="{{ path('refund_page') }}">Refund and Cancellation Policy</a></li>
+    <li class="{% if currentPage == 'privacy_page' %}current-menu-item{% endif %}"><a class="" href="{{ path('privacy_page') }}">Privacy</a></li>
+    <li class="{% if currentPage == 'contact_us_page' %}current-menu-item{% endif %}"><a class="" href="{{ path('contact_us_page') }}">Contact Us</a></li>
+
+</ul>
+{% else %}
+<ul class="sidenav" id="mobile-demo">
+
+    <li>
+        <div class="user-view">
+            <a href="{{ path('homepage') }}">
+                <div class="background">
+                    <img alt="sidenav-background" width="150" height="60" loading="lazy" src="{{ asset('img/Pointlocals-Logo.svg') }}">
+                </div>
+            </a>
+
+            {#<a href="#"><img alt="user-image" id="mobileUserImage" class="circle" src="{{ asset('img/place.png') }}"></a>#}
+            <a href="#"><span id="mobileUserName" class="white-text name">{% if user.FirstName %} {{ user.FirstName }} {{ user.LastName }} {% else %} Anonymous User {% endif %}</span></a>
+            <a href="#"><span id="mobileUserEmail" class="white-text email">{% if user.Email %} {{ user.Email }} {% else %} Not logged in {% endif %}</span></a>
+
+        </div>
+    </li>
+
+    <li class="cta-menu-item"><a data-target="loginModal" class="modal-trigger add-location-menu-item" href="{{ path('add-location-page') }}"><i class="material-icons">add_location</i>Add Location</a></li>
+
+    <li class="login-menu-item {% if user.Id != 0 %}hide{% endif %}"><a class="waves-effect" href="#!"><i class="fas fa-sign-in-alt"></i>Sign In</a></li>
+
+    <li class="user-menu-item {% if user.Id == 0 %}hide{% endif %}"><div class="divider"></div></li>
+
+    <li class="user-menu-item {% if user.Id == 0 %}hide{% endif %}">
+        <a href="{{ path('my-locations-page') }}"><i class="material-icons">location_city</i>Dashboard</a>
+    </li>
+
+    <li class="user-menu-item {% if user.Id == 0 %}hide{% endif %}">
+        <a href="{{ path('user-settings') }}"><i class="material-icons">settings</i>Settings</a>
+    </li>
+
+    <li class="user-menu-item {% if user.Id == 0 %}hide{% endif %} divider"></li>
+
+    <li class="user-menu-item {% if user.Id == 0 %}hide{% endif %}">
+        <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+    </li>
+
+</ul>
+{% endif %}
+
+
+<div class="sign-in-modal-overlay"></div>
+
+<div id="signInModal" class="sign-in-modal">
+                                    
+    <h3>Sign in to your account <span class="close-modal-custom" style="float:right"><a href="#"><i class="material-icons">close</i></a></span></h3>
+    
+    <div class="login-wrapper">
+
+        <div class="input-field col s12">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="username" type="text" class="validate">
+            <label for="username">Username</label>
+        </div>
+
+        <div class="input-field col s12">
+            <i class="material-icons prefix">lock</i>
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+        </div>
+        <!-- Added By Kaushik Rabadiya when sign in and not activate email -->
+        <div class="row" id="resend_email" style="display:none;" > 
+            <div class="input-field col l6 right" style="padding:0px;">
+                <input id="uname" name="uname" type="hidden" />
+                <div id="resend-activation-email" class="btn btn-large classic-login" style="font-size:9px;">Resend Activation Mail Again</div>
+            </div>
+        </div>
+
+        <input type="hidden" id="csrf" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+        <div id="signInBtn" class="btn btn-large classic-login">Sign in</div>
+{#        <div id="signInBtn2" class="btn btn-large classic-login">Sign in2</div>#}
+
+    </div>
+
+    <div class="social-login-wrapper">
+
+        <div class="strike">
+            <span>OR</span>
+        </div>
+
+        <div id="googleSignIn" class="customGPlusSignIn">
+            <span class="icon"><i class="fab fa-google"></i></span>
+            <span class="label">Sign in with</span>
+            <span class="buttonText">Google</span>
+        </div>
+
+        <div id="fbSignIn" class="">
+            <i class="fab fa-facebook-f"></i>
+            Sign in with Facebook
+        </div>
+		
+		
+    </div>
+
+    <p class="how-to">Don't have an account yet? Create one now, it won't take more than a minute. Click <a class="trigger-register" href="#">here</a> to register.</p>
+    <p class="how-to">Forgot your password?. Click <a class="trigger-forgot" href="#">here</a> to reset it.</p>
+
+</div>
+
+
+<div id="registerModal" class="sign-in-modal">
+
+    <h3>Create your Account <span class="close-modal-custom" style="float:right"><a href="#"><i class="material-icons">close</i></a></span></h3>
+
+    <div class="login-wrapper">
+
+        <div class="input-field col s12">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="reg_username" type="text" class="validate">
+            <label for="reg_username">Username</label>
+        </div>
+
+        <div class="input-field col s12">
+            <i class="material-icons prefix">email</i>
+            <input id="reg_email" type="email" class="validate">
+            <label for="reg_email">Email</label>
+        </div>
+
+        <div class="input-field col s12">
+            <i class="material-icons prefix">lock</i>
+            <input id="reg_password" type="password" class="validate">
+            <label for="reg_password">Password</label>
+        </div>
+
+        <div class="input-field col s12">
+            <i class="material-icons prefix">lock_open</i>
+            <input id="reg_verify_password" type="password" class="validate">
+            <label for="reg_verify_password">Verify Password</label>
+        </div>
+
+
+        <div id="registerBtn" class="btn btn-large classic-login">Register</div>
+
+    </div>
+
+    <p class="how-to">Don't worry we will keep your information safe.</p>
+
+</div>
+<div id="forgotModal" class="sign-in-modal">
+
+    <h3>Forgot password <span class="close-modal-custom" style="float:right"><a href="#"><i class="material-icons">close</i></a></span></h3>
+
+    <div class="forgot-wrapper">
+
+        <div class="input-field col s12">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="for_username" type="text" class="validate">
+            <label for="for_username">Username or Email</label>
+        </div>
+
+        <div id="forgotBtn" class="btn btn-large classic-login">Reset Password</div>
+
+    </div>
+
+    <p class="how-to">If the username or email is associated with an account, we will send a password reset link to the account's email.</p>
+
+</div>
+</header>

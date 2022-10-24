@@ -16,6 +16,7 @@ class PublicController extends AptoAbstractController
 
 
         return $this->render('public/home.html.twig', [
+            'currentPage' => 'homepage',
         ]);
     }
 }
