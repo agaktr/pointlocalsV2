@@ -3,7 +3,7 @@
 
     <div class="nav-wrapper" data-page="{{ currentPage }}">
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <a href="{{ path('app_home') }}" class="brand-logo"><img alt="Point Locals Logo" width="110" height="44" src="{{ asset('img/Pointlocals-Logo.svg') }}"></a>
+        <a href="{{ path('app_home') }}" class="brand-logo"><img alt="Point Locals Logo" width="110" height="44" src="{{ asset('build/img/Pointlocals-Logo.svg') }}"></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li class="cta-menu-item"><a href="{{ path('app_home') }}" data-target="loginModal" class="modal-trigger add-location-menu-item"><i class="material-icons">add_location</i>Add Location</a></li>
             <li class="login-menu-item {% if app.user is not null %}hide{% endif %}"><a href="#"><i class="fas fa-sign-in-alt"></i>Sign In</a></li>
@@ -13,7 +13,7 @@
                     <span id="userName">{% if app.user is not null %}{{ user.FirstName }} {{ user.LastName }}{% endif %}</span>
                     <i class="material-icons dropdown-icon">arrow_drop_down</i></a></li>
         </ul>
-        <a href="#iconDecor" class="notif-class right" ><img width="30" height="64" alt="Notification icon" loading="lazy" class="" src="{{ asset('img/popularsearches/Notification orange.svg') }}"></a>
+        <a href="#iconDecor" class="notif-class right" ><img width="30" height="64" alt="Notification icon" loading="lazy" class="" src="{{ asset('build/img/popularsearches/Notification orange.svg') }}"></a>
     </div>
 </nav>
 
@@ -51,11 +51,11 @@
         <div class="user-view">
             <a href="{{ path('app_home') }}">
                 <div class="background">
-                    <img alt="sidenav-background" width="150" height="60" loading="lazy" src="{{ asset('img/Pointlocals-Logo.svg') }}">
+                    <img alt="sidenav-background" width="150" height="60" loading="lazy" src="{{ asset('build/img/Pointlocals-Logo.svg') }}">
                 </div>
             </a>
 
-            {#<a href="#"><img alt="user-image" id="mobileUserImage" class="circle" src="{{ asset('img/place.png') }}"></a>#}
+            {#<a href="#"><img alt="user-image" id="mobileUserImage" class="circle" src="{{ asset('build/img/place.png') }}"></a>#}
             <a href="#"><span id="mobileUserName" class="white-text name">{% if app.user is not null %} {{ user.FirstName }} {{ user.LastName }} {% else %} Anonymous User {% endif %}</span></a>
             <a href="#"><span id="mobileUserEmail" class="white-text email">{% if app.user is not null %} {{ user.Email }} {% else %} Not logged in {% endif %}</span></a>
 
