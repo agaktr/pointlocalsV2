@@ -18,6 +18,7 @@ const gps = {
         //The api.ipdata.co api key
         apikey: "f4ca6ff7e5152e9208fef21603d61a47140ec4dc8e11018b333d4bc1"
     },
+    settings: {},
     //Navigator Service Status
     serviceIsActive:false,
     //Permission Service Status
@@ -208,31 +209,36 @@ const gps = {
             handleGeoError();
         });
     },
-    initialize:function() {
+    initialize:function(options) {
 
-        //Check the environment variables
-        checkEnv();
+        console.log(this)
 
-        //If navigator go normally
-        //Else trigger error
-        if (serviceIsActive){
-
-            start();
-        }else{
-
-            handleGeoError();
-        }
-
-        if (settings.env === 'dev'){
-            console.log('aptoGeoLocation: DEBUG - Init Finished');
-            console.log(this);
-        }
-
-        if (position.lat === 0 && position.lng === 0){
-            position = positionDefault;
-        }
-
-        return this;
+        // settings = {...defaults,...options},
+        //
+        //
+        // //Check the environment variables
+        // checkEnv();
+        //
+        // //If navigator go normally
+        // //Else trigger error
+        // if (serviceIsActive){
+        //
+        //     start();
+        // }else{
+        //
+        //     handleGeoError();
+        // }
+        //
+        // if (settings.env === 'dev'){
+        //     console.log('aptoGeoLocation: DEBUG - Init Finished');
+        //     console.log(this);
+        // }
+        //
+        // if (position.lat === 0 && position.lng === 0){
+        //     position = positionDefault;
+        // }
+        //
+        // return this;
     }
 }
 
