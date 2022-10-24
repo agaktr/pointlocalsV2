@@ -8,7 +8,10 @@ function doTheInit() {
     /**
      * Wait until GPS inspection is finished
      */
-    console.log(A)
+    console.log(A({
+        env : 'prod',
+        prompt : false
+    }))
     // if (A.aptoGPS.isFinished() === false) {//we want it to match
     //     setTimeout(doTheInit,1);//wait 1 millisecnds then recheck
     //     return false;
