@@ -1,6 +1,5 @@
 <header>
 <nav>
-{{ dump(app.user) }}
     <div class="nav-wrapper" data-page="{{ app.request.attributes.get("_route") }}">
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <a href="{{ path('app_home') }}" class="brand-logo"><img alt="Point Locals Logo" width="110" height="44" src="{{ asset('build/img/Pointlocals-Logo.svg') }}"></a>
