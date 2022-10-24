@@ -6,7 +6,7 @@
  * and fallback IP based API.
  */
 
-export let gps = {
+export const GPS = {
     defaults : {
         //Current environment - dev provides log information
         env : 'prod',

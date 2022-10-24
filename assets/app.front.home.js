@@ -1,7 +1,7 @@
 // import './js/geolocation'
-import { gps } from './js/geolocation';
+import { GPS } from './js/geolocation';
 
-gps.initialize({
+GPS.initialize({
     env : 'dev',
     prompt : true
 })
@@ -13,8 +13,8 @@ function doTheInit() {
     /**
      * Wait until GPS inspection is finished
      */
-    console.log(gps)
-    if (gps.isFinished === false) {//we want it to match
+    console.log(GPS)
+    if (GPS.isFinished === false) {//we want it to match
         setTimeout(doTheInit,1);//wait 1 millisecnds then recheck
         return false;
     }
