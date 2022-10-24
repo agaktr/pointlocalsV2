@@ -213,7 +213,7 @@ const gps = {
 
         console.log(this)
 
-        // settings = {...defaults,...options},
+        this.settings = {...this.defaults,...options}
         //
         //
         // //Check the environment variables
