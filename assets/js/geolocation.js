@@ -87,14 +87,14 @@ export function aptoGeoLocation(options) {
         return permissionsStatus;
     }
 
-    /**
-     * Plugin execution status
-     * @returns {boolean}
-     */
-    gps.isFinished = function() {
-
-        return isFinished;
-    }
+    // /**
+    //  * Plugin execution status
+    //  * @returns {boolean}
+    //  */
+    // gps.isFinished = function() {
+    //
+    //     return isFinished;
+    // }
 
     /**
      * Found position lat,lng
@@ -211,6 +211,9 @@ export function aptoGeoLocation(options) {
             checkPositionBounds();
 console.log('hi')
             isFinished = true;
+
+        console.log(isFinished)
+        console.log(isFinished)
     }
 
     let checkPositionBounds = function () {
