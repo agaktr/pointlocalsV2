@@ -5,10 +5,7 @@
  * the user based on the navigator settings
  * and fallback IP based API.
  */
-
-A = {}
-
-function aptoGeoLocation(options) {
+export function aptoGeoLocation(options) {
 
     /**
      * Private Variable initialization
@@ -378,9 +375,7 @@ function aptoGeoLocation(options) {
             position = positionDefault;
         }
 
-        console.log(this.aptoGPS)
-
-        return this.aptoGPS;
+        return this;
     };
 
     if (settings.start === true){
@@ -390,9 +385,4 @@ function aptoGeoLocation(options) {
         return null;
     }
 }
-
-A.aptoGPS = aptoGeoLocation({
-    env : 'prod',
-    prompt : false
-});
 
