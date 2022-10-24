@@ -8,7 +8,7 @@
 
 // A = {}
 
-export let A = function aptoGeoLocation(options) {
+const A = function aptoGeoLocation(options) {
 
     /**
      * Private Variable initialization
@@ -388,6 +388,8 @@ export let A = function aptoGeoLocation(options) {
         return null;
     }
 }
+
+module.exports = { A }
 
 // A.aptoGPS = aptoGeoLocation({
 //     env : 'prod',

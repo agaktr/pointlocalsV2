@@ -1,5 +1,5 @@
-import { A } from './js/geolocation';
-
+const { A } = require ('./js/geolocation');
+// const { replaceStr } = require('./utility.js')
 /**
  * The main function that starts all the execution
  * when we have all needed info
