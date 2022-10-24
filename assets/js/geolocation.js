@@ -44,7 +44,7 @@ const gps = {
     invoke:false,
     checkEnv:function() {
 
-        if (settings.env === 'dev'){
+        if (this.settings.env === 'dev'){
             console.log('aptoGeoLocation: INFO - Development environment is enabled.');
             console.log('aptoGeoLocation: INFO - Debug information about queries will appear.');
             console.log('aptoGeoLocation: INFO - Please change the env option to "prod" when finished.');
@@ -52,27 +52,27 @@ const gps = {
 
         if (navigator.geolocation) {
 
-            serviceIsActive = true;
+            this.serviceIsActive = true;
         }
 
         if (navigator.permissions) {
 
-            permissionsIsActive = true;
+            this.permissionsIsActive = true;
         }
     },
     start:function() {
 
-        if (permissionsIsActive){
+        if (this.permissionsIsActive){
 
-            makePermissionsQuery();
+            this.makePermissionsQuery();
         }else{
 
-            makePositionQuery();
+            this.makePositionQuery();
         }
     },
     handleGeoError:function() {
 
-        // fetch('https://api.ipdata.co/?api-key='+settings.apikey)
+        // fetch('https://api.ipdata.co/?api-key='+this.settings.apikey)
         //     .then(res => res.json())
         //     .then(data => {
         //         console.log(data)
@@ -82,40 +82,40 @@ const gps = {
         //             console.log(data);
         //         }
         //
-        //         isAccurate = false;
-        //         position = {
+        //         this.isAccurate = false;
+        //         this.position = {
         //             lat: parseFloat(data.latitude),
         //             lng: parseFloat(data.longitude)
         //         }
         //
-        //         checkPositionBounds();
+        //         this.checkPositionBounds();
         //
-        //         isFinished = true;
+        //         this.isFinished = true;
         //     })
-        isAccurate = false;
-        position = {
+        this.isAccurate = false;
+        this.position = {
             lat: 17.40010939119478,
             lng: 78.48258630887469
         }
 
-        checkPositionBounds();
+        this.checkPositionBounds();
 
-        isFinished = true;
+        this.isFinished = true;
     },
     checkPositionBounds:function () {
 
-        if (position.lat < bounds.south || position.lat > bounds.north || position.lng > bounds.east || position.lng < bounds.west){
+        if (this.position.lat < this.bounds.south || this.position.lat > this.bounds.north || this.position.lng > this.bounds.east || this.position.lng < this.bounds.west){
 
-            position = positionDefault;
+            this.position = positionDefault;
         }else{
 
-            isInBounds = true;
+            this.isInBounds = true;
         }
 
-        if (settings.env === 'dev'){
+        if (this.settings.env === 'dev'){
 
             console.log('aptoGeoLocation: DEBUG - checkPositionBounds');
-            if (isInBounds === false){
+            if (this.isInBounds === false){
 
                 console.log('Out of bounds');
             }else {
@@ -128,36 +128,36 @@ const gps = {
 
         navigator.permissions.query({name: 'geolocation'}).then(function (result) {
 
-            if (settings.env === 'dev'){
+            if (this.settings.env === 'dev'){
 
                 console.log('aptoGeoLocation: DEBUG - makePermissionsQuery');
                 console.log(result);
             }
 
-            permissionsStatus = result.state;
+            this.permissionsStatus = result.state;
 
             switch (result.state) {
 
                 case "granted":
 
-                    makePositionQuery();
+                    this.makePositionQuery();
                     break;
                 case "prompt":
 
                     //If prompt on init is active
                     //ask for permission directly to pop
                     //allow location window
-                    if (settings.prompt === true){
+                    if (this.settings.prompt === true){
 
-                        makePositionQuery();
+                        this.makePositionQuery();
                     }else{
 
-                        handleGeoError();
+                        this.handleGeoError();
                     }
                     break;
                 case "denied":
 
-                    handleGeoError();
+                    this.handleGeoError();
                     break;
             }
         });
@@ -166,30 +166,30 @@ const gps = {
 
         navigator.geolocation.getCurrentPosition(function (devicePos) {
 
-            if (settings.env === 'dev'){
+            if (this.settings.env === 'dev'){
                 console.log('aptoGeoLocation: DEBUG - makePositionQuery');
                 console.log(devicePos);
             }
 
-            isAccurate = true;
-            position = {
+            this.isAccurate = true;
+            this.position = {
                 lat: parseFloat(devicePos?.coords.latitude),
                 lng: parseFloat(devicePos?.coords.longitude)
             }
 
-            checkPositionBounds();
+            this.checkPositionBounds();
 
             //inject granted status as this is an if dependent variable
             //,so we make sure it's in place for the prompt statement
-            permissionsStatus = 'granted';
+            this.permissionsStatus = 'granted';
 
-            if (invoke === true){
+            if (this.invoke === true){
 
                 let url = new URL(window.location.href);
                 let params = url.searchParams;
 
                 params.set('invoke','1');
-                params.set('p',position.lat+','+position.lng);
+                params.set('p',this.position.lat+','+this.position.lng);
 
                 url.search = params.toString();
 
@@ -203,41 +203,39 @@ const gps = {
 
             }
 
-            isFinished = true;
+            this.isFinished = true;
         },function () {
 
-            handleGeoError();
+            this.handleGeoError();
         });
     },
     initialize:function(options) {
 
-        console.log(this)
-
         this.settings = {...this.defaults,...options}
-        //
-        //
-        // //Check the environment variables
-        // checkEnv();
-        //
-        // //If navigator go normally
-        // //Else trigger error
-        // if (serviceIsActive){
-        //
-        //     start();
-        // }else{
-        //
-        //     handleGeoError();
-        // }
-        //
-        // if (settings.env === 'dev'){
-        //     console.log('aptoGeoLocation: DEBUG - Init Finished');
-        //     console.log(this);
-        // }
-        //
-        // if (position.lat === 0 && position.lng === 0){
-        //     position = positionDefault;
-        // }
-        //
+
+
+        //Check the environment variables
+        this.checkEnv();
+
+        //If navigator go normally
+        //Else trigger error
+        if (this.serviceIsActive){
+
+            this.start();
+        }else{
+
+            this.handleGeoError();
+        }
+
+        if (this.settings.env === 'dev'){
+            console.log('aptoGeoLocation: DEBUG - Init Finished');
+            console.log(this);
+        }
+
+        if (this.position.lat === 0 && this.position.lng === 0){
+            this.position = this.positionDefault;
+        }
+
         return this;
     }
 }
