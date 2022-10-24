@@ -145,7 +145,7 @@ export function viewportFix() {
 
 export function gps() {
 
-    let A = {}
+    let A = {};
     (function doTheThing() {
         // Act on either the window.console, or the normal console.
 
