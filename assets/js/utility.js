@@ -192,6 +192,9 @@ export function gps() {
              * Disallow multiple instances of the plugin to run
              * in order to avoid duplicate instances and requests
              */
+
+            console.log(this)
+
             if (this.length > 1) {
 
                 return null;
