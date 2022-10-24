@@ -146,7 +146,7 @@ export function viewportFix() {
 export function gps() {
 
     let A = {};
-    (function doTheThing() {
+
         // Act on either the window.console, or the normal console.
 
         function aptoGeoLocation(options) {
@@ -538,8 +538,6 @@ export function gps() {
             prompt : false
         })
 
-
-    })();
 
     return A;
 }
