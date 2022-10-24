@@ -6,7 +6,7 @@
         <a href="{{ path('app_home') }}" class="brand-logo"><img alt="Point Locals Logo" width="110" height="44" src="{{ asset('img/Pointlocals-Logo.svg') }}"></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li class="cta-menu-item"><a href="{{ path('app_home') }}" data-target="loginModal" class="modal-trigger add-location-menu-item"><i class="material-icons">add_location</i>Add Location</a></li>
-            <li class="login-menu-item {% if user.Id != 0 %}hide{% endif %}"><a href="#"><i class="fas fa-sign-in-alt"></i>Sign In</a></li>
+            <li class="login-menu-item {% if app.user is not null %}hide{% endif %}"><a href="#"><i class="fas fa-sign-in-alt"></i>Sign In</a></li>
             <li class="user-menu-item {% if user.Id == 0 %}hide{% endif %}" {% if user.Id != 0 %}data-login-type="{{ user.LoginType }}"{% endif %}><a class="dropdown-trigger" href="#!" data-target="userMenu"><i class="material-icons">account_circle</i><span id="userName">{{ user.FirstName }} {{ user.LastName }}</span> <i class="material-icons dropdown-icon">arrow_drop_down</i></a></li>
         </ul>
         <a href="#iconDecor" class="notif-class right" ><img width="30" height="64" alt="Notification icon" loading="lazy" class="" src="{{ asset('img/popularsearches/Notification orange.svg') }}"></a>
