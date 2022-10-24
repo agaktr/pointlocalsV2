@@ -87,14 +87,14 @@ export function aptoGeoLocation(options) {
         return permissionsStatus;
     }
 
-    // /**
-    //  * Plugin execution status
-    //  * @returns {boolean}
-    //  */
-    // gps.isFinished = function() {
-    //
-    //     return isFinished;
-    // }
+    /**
+     * Plugin execution status
+     * @returns {boolean}
+     */
+    gps.checkFinished = function() {
+
+        return isFinished;
+    }
 
     /**
      * Found position lat,lng
