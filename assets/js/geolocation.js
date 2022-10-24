@@ -7,7 +7,7 @@
  */
 export function aptoGeoLocation(options) {
 
-    let gps;
+    let gps = {};
 
     /**
      * Private Variable initialization
