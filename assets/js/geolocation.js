@@ -238,7 +238,7 @@ const gps = {
         //     position = positionDefault;
         // }
         //
-        // return this;
+        return this;
     }
 }
 
