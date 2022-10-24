@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "@tailwindcss/forms": "^0.5.3",
+        "Font-Awesome": "FortAwesome/Font-Awesome",
         "fontawesome": "^5.6.3",
         "sass": "^1.55.0",
         "sass-loader": "^13.1.0"
