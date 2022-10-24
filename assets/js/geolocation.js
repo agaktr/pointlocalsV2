@@ -7,12 +7,11 @@
  */
 export function aptoGeoLocation(options) {
 
-    let gps = {};
-
     /**
      * Private Variable initialization
      */
-    let defaults = {
+    let gps = {},
+        defaults = {
             //Current environment - dev provides log information
             env : 'prod',
             //If we want to autostart the plugin
