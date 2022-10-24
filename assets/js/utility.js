@@ -147,7 +147,7 @@ export function gps() {
     (function doTheThing() {
         // Act on either the window.console, or the normal console.
 
-        window.gps = function(options) {
+        function aptoGeoLocation(options) {
 
             /**
              * Private Variable initialization
@@ -527,11 +527,12 @@ export function gps() {
                 return null;
             }
         }
+
+        window.gps = aptoGeoLocation({
+            env : 'dev',
+            prompt : false
+        })
     })();
-    // window.gps({
-    //     env : 'dev',
-    //     prompt : false
-    // })
 }
 
 /**
