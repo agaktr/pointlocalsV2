@@ -165,6 +165,7 @@ let gps = {
     },
     makePositionQuery:function () {
 
+        let _this = this
         navigator.geolocation.getCurrentPosition(function (devicePos) {
 
             if (_this.settings.env === 'dev'){
