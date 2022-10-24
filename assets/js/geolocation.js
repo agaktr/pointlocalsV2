@@ -135,7 +135,7 @@ let gps = {
                 console.log(result);
             }
 
-            this.permissionsStatus = result.state;
+            _this.permissionsStatus = result.state;
 
             switch (result.state) {
 
