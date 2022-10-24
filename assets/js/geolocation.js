@@ -6,9 +6,9 @@
  * and fallback IP based API.
  */
 
-A = {}
+// A = {}
 
-function aptoGeoLocation(options) {
+export let A = function aptoGeoLocation(options) {
 
     /**
      * Private Variable initialization
@@ -389,8 +389,8 @@ function aptoGeoLocation(options) {
     }
 }
 
-A.aptoGPS = aptoGeoLocation({
-    env : 'prod',
-    prompt : false
-});
+// A.aptoGPS = aptoGeoLocation({
+//     env : 'prod',
+//     prompt : false
+// });
 
