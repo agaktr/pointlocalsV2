@@ -82,7 +82,7 @@ export function aptoGeoLocation(options) {
      * denied: we disallow location
      * inactive: browser does not support permissions
      */
-    this.getPermissionsStatus = function() {
+    gps.getPermissionsStatus = function() {
 
         return permissionsStatus;
     }
@@ -91,7 +91,7 @@ export function aptoGeoLocation(options) {
      * Plugin execution status
      * @returns {boolean}
      */
-    this.isFinished = function() {
+    gps.isFinished = function() {
 
         return isFinished;
     }
@@ -100,7 +100,7 @@ export function aptoGeoLocation(options) {
      * Found position lat,lng
      * @returns {{lng: number, lat: number}}
      */
-    this.getPosition = function() {
+    gps.getPosition = function() {
 
         return position;
     }
@@ -109,7 +109,7 @@ export function aptoGeoLocation(options) {
      * IP or Navigator fetch type
      * @returns {boolean}
      */
-    this.isAccurate = function() {
+    gps.isAccurate = function() {
 
         return isAccurate;
     }
@@ -119,7 +119,7 @@ export function aptoGeoLocation(options) {
      * default bounds if any
      * @returns {boolean}
      */
-    this.isInBounds = function() {
+    gps.isInBounds = function() {
 
         return isInBounds;
     }
@@ -129,7 +129,7 @@ export function aptoGeoLocation(options) {
      *
      * @returns {*}
      */
-    this.getSettings = function() {
+    gps.getSettings = function() {
 
         return settings;
     }
@@ -342,7 +342,7 @@ export function aptoGeoLocation(options) {
      * This will make a makePositionQuery with a global scope
      * used for click events etc
      */
-    this.allowPermission = function () {
+    gps.allowPermission = function () {
 
         invoke = true;
         makePositionQuery();
@@ -352,7 +352,7 @@ export function aptoGeoLocation(options) {
      * Initialize Geolocation based on preferences
      * @returns {jQuery}
      */
-    this.initialize = function() {
+    gps.initialize = function() {
 
         //Check the environment variables
         checkEnv();
@@ -369,19 +369,19 @@ export function aptoGeoLocation(options) {
 
         if (settings.env === 'dev'){
             console.log('aptoGeoLocation: DEBUG - Init Finished');
-            console.log(this);
+            console.log(gps);
         }
 
         if (position.lat === 0 && position.lng === 0){
             position = positionDefault;
         }
 
-        return this;
+        return gps;
     };
 
     if (settings.start === true){
 
-        return this.initialize();
+        return gps.initialize();
     }else{
         return null;
     }
