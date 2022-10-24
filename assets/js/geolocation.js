@@ -5,13 +5,15 @@
  * the user based on the navigator settings
  * and fallback IP based API.
  */
-export function aptoGeoLocation(options) {
+
+A = {}
+
+function aptoGeoLocation(options) {
 
     /**
      * Private Variable initialization
      */
-    let gps = {},
-        defaults = {
+    let defaults = {
             //Current environment - dev provides log information
             env : 'prod',
             //If we want to autostart the plugin
@@ -51,7 +53,7 @@ export function aptoGeoLocation(options) {
      * Disallow multiple instances of the plugin to run
      * in order to avoid duplicate instances and requests
      */
-    if (gps.length > 1) {
+    if (this.length > 1) {
 
         return null;
     }
@@ -60,7 +62,7 @@ export function aptoGeoLocation(options) {
      * Navigator Service Status
      * @returns {boolean}
      */
-    gps.serviceIsActive = function() {
+    this.serviceIsActive = function() {
 
         return serviceIsActive;
     }
@@ -82,7 +84,7 @@ export function aptoGeoLocation(options) {
      * denied: we disallow location
      * inactive: browser does not support permissions
      */
-    gps.getPermissionsStatus = function() {
+    this.getPermissionsStatus = function() {
 
         return permissionsStatus;
     }
@@ -91,7 +93,7 @@ export function aptoGeoLocation(options) {
      * Plugin execution status
      * @returns {boolean}
      */
-    gps.checkFinished = function() {
+    this.isFinished = function() {
 
         return isFinished;
     }
@@ -100,7 +102,7 @@ export function aptoGeoLocation(options) {
      * Found position lat,lng
      * @returns {{lng: number, lat: number}}
      */
-    gps.getPosition = function() {
+    this.getPosition = function() {
 
         return position;
     }
@@ -109,7 +111,7 @@ export function aptoGeoLocation(options) {
      * IP or Navigator fetch type
      * @returns {boolean}
      */
-    gps.isAccurate = function() {
+    this.isAccurate = function() {
 
         return isAccurate;
     }
@@ -119,7 +121,7 @@ export function aptoGeoLocation(options) {
      * default bounds if any
      * @returns {boolean}
      */
-    gps.isInBounds = function() {
+    this.isInBounds = function() {
 
         return isInBounds;
     }
@@ -129,7 +131,7 @@ export function aptoGeoLocation(options) {
      *
      * @returns {*}
      */
-    gps.getSettings = function() {
+    this.getSettings = function() {
 
         return settings;
     }
@@ -182,38 +184,35 @@ export function aptoGeoLocation(options) {
      */
     let handleGeoError = function() {
 
-        // fetch('https://api.ipdata.co/?api-key='+settings.apikey)
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data)
-        //         if (settings.env === 'dev'){
-        //
-        //             console.log('aptoGeoLocation: DEBUG - handleGeoError');
-        //             console.log(data);
-        //         }
-        //
-        //         isAccurate = false;
-        //         position = {
-        //             lat: parseFloat(data.latitude),
-        //             lng: parseFloat(data.longitude)
-        //         }
-        //
-        //         checkPositionBounds();
-        //
-        //         isFinished = true;
-        //     })
-             isAccurate = false;
-            position = {
-                lat: 17.40010939119478,
-                lng: 78.48258630887469
-            }
+        fetch('https://api.ipdata.co/?api-key='+settings.apikey)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (settings.env === 'dev'){
 
-            checkPositionBounds();
-console.log('hi')
-            isFinished = true;
+                    console.log('aptoGeoLocation: DEBUG - handleGeoError');
+                    console.log(data);
+                }
 
-        console.log(isFinished)
-        console.log(isFinished)
+                isAccurate = false;
+                position = {
+                    lat: parseFloat(data.latitude),
+                    lng: parseFloat(data.longitude)
+                }
+
+                checkPositionBounds();
+
+                isFinished = true;
+            })
+            //  isAccurate = false;
+            // position = {
+            //     lat: 17.40010939119478,
+            //     lng: 78.48258630887469
+            // }
+            //
+            // checkPositionBounds();
+            //
+            // isFinished = true;
     }
 
     let checkPositionBounds = function () {
@@ -345,7 +344,7 @@ console.log('hi')
      * This will make a makePositionQuery with a global scope
      * used for click events etc
      */
-    gps.allowPermission = function () {
+    this.allowPermission = function () {
 
         invoke = true;
         makePositionQuery();
@@ -355,7 +354,7 @@ console.log('hi')
      * Initialize Geolocation based on preferences
      * @returns {jQuery}
      */
-    gps.initialize = function() {
+    this.initialize = function() {
 
         //Check the environment variables
         checkEnv();
@@ -372,23 +371,26 @@ console.log('hi')
 
         if (settings.env === 'dev'){
             console.log('aptoGeoLocation: DEBUG - Init Finished');
-            console.log(gps);
+            console.log(this);
         }
 
         if (position.lat === 0 && position.lng === 0){
             position = positionDefault;
         }
 
-        console.log(gps)
-
-        return gps.instance;
+        return this;
     };
 
     if (settings.start === true){
 
-        return gps.initialize();
+        return this.initialize();
     }else{
         return null;
     }
 }
+
+A.aptoGPS = aptoGeoLocation({
+    env : 'prod',
+    prompt : false
+});
 

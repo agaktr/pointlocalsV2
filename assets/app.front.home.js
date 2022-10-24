@@ -1,4 +1,4 @@
-import {aptoGeoLocation} from "./js/geolocation";
+import './js/geolocation'
 
 /**
  * The main function that starts all the execution
@@ -8,15 +8,8 @@ function doTheInit() {
     /**
      * Wait until GPS inspection is finished
      */
-
-    let gps = aptoGeoLocation({
-        env : 'prod',
-        prompt : false
-    });
-    // console.log(gps)
-    console.log(gps.isFinished)
-    console.log(gps.checkFinished())
-    if (gps.checkFinished() === false) {//we want it to match
+    console.log(A)
+    if (A.aptoGPS.isFinished() === false) {//we want it to match
         setTimeout(doTheInit,1);//wait 1 millisecnds then recheck
         return false;
     }
