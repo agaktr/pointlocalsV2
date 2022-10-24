@@ -126,9 +126,10 @@ let gps = {
     },
     makePermissionsQuery:function() {
 
+        let _this = this
         navigator.permissions.query({name: 'geolocation'}).then(function (result) {
 
-            if (this.settings.env === 'dev'){
+            if (_this.settings.env === 'dev'){
 
                 console.log('aptoGeoLocation: DEBUG - makePermissionsQuery');
                 console.log(result);
@@ -140,24 +141,24 @@ let gps = {
 
                 case "granted":
 
-                    this.makePositionQuery();
+                    _this.makePositionQuery();
                     break;
                 case "prompt":
 
                     //If prompt on init is active
                     //ask for permission directly to pop
                     //allow location window
-                    if (this.settings.prompt === true){
+                    if (_this.settings.prompt === true){
 
-                        this.makePositionQuery();
+                        _this.makePositionQuery();
                     }else{
 
-                        this.handleGeoError();
+                        _this.handleGeoError();
                     }
                     break;
                 case "denied":
 
-                    this.handleGeoError();
+                    _this.handleGeoError();
                     break;
             }
         });
