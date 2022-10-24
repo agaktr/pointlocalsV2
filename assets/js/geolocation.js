@@ -106,7 +106,7 @@ let gps = {
 
         if (this.position.lat < this.bounds.south || this.position.lat > this.bounds.north || this.position.lng > this.bounds.east || this.position.lng < this.bounds.west){
 
-            this.position = positionDefault;
+            this.position = this.positionDefault;
         }else{
 
             this.isInBounds = true;
