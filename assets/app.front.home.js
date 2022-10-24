@@ -1,5 +1,5 @@
-const { A } = require ('./js/geolocation');
-// const { replaceStr } = require('./utility.js')
+// import './js/geolocation'
+import { gps } from './js/geolocation';
 /**
  * The main function that starts all the execution
  * when we have all needed info
@@ -8,10 +8,7 @@ function doTheInit() {
     /**
      * Wait until GPS inspection is finished
      */
-    console.log(A({
-        env : 'prod',
-        prompt : false
-    }))
+    console.log(gps)
     // if (A.aptoGPS.isFinished() === false) {//we want it to match
     //     setTimeout(doTheInit,1);//wait 1 millisecnds then recheck
     //     return false;
