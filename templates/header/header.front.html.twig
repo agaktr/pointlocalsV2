@@ -20,10 +20,10 @@
 
 <ul id="userMenu" class="dropdown-content">
     <li>
-        <a href="{{ path('my-locations-page') }}"><i class="material-icons">location_city</i>Dashboard</a>
+        <a href="{{ path('app_home') }}"><i class="material-icons">location_city</i>Dashboard</a>
     </li>
     <li>
-        <a href="{{ path('user-settings') }}"><i class="material-icons">settings</i>Settings</a>
+        <a href="{{ path('app_home') }}"><i class="material-icons">settings</i>Settings</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -35,12 +35,12 @@
 <ul class="sidenav" id="mobile-demo" >
 
     <h4>Terms of Service</h4>
-    <li class="{% if currentPage == 'terms_and_conditions' %}current-menu-item{% endif %}"><a class="" href="{{ path('terms_and_conditions') }}">Terms</a></li>
-    <li class="{% if currentPage == 'disclaimer_page' %}current-menu-item{% endif %}"><a class="" href="{{ path('disclaimer_page') }}">Disclaimer</a></li>
-    <li class="{% if currentPage == 'cookies_page' %}current-menu-item{% endif %}"><a class="" href="{{ path('cookies_page') }}">Cookies Policy</a></li>
-    <li class="{% if currentPage == 'refund_page' %}current-menu-item{% endif %}"><a class="" href="{{ path('refund_page') }}">Refund and Cancellation Policy</a></li>
-    <li class="{% if currentPage == 'privacy_page' %}current-menu-item{% endif %}"><a class="" href="{{ path('privacy_page') }}">Privacy</a></li>
-    <li class="{% if currentPage == 'contact_us_page' %}current-menu-item{% endif %}"><a class="" href="{{ path('contact_us_page') }}">Contact Us</a></li>
+    <li class="{% if currentPage == 'terms_and_conditions' %}current-menu-item{% endif %}"><a class="" href="{{ path('app_home') }}">Terms</a></li>
+    <li class="{% if currentPage == 'disclaimer_page' %}current-menu-item{% endif %}"><a class="" href="{{ path('app_home') }}">Disclaimer</a></li>
+    <li class="{% if currentPage == 'cookies_page' %}current-menu-item{% endif %}"><a class="" href="{{ path('app_home') }}">Cookies Policy</a></li>
+    <li class="{% if currentPage == 'refund_page' %}current-menu-item{% endif %}"><a class="" href="{{ path('app_home') }}">Refund and Cancellation Policy</a></li>
+    <li class="{% if currentPage == 'privacy_page' %}current-menu-item{% endif %}"><a class="" href="{{ path('app_home') }}">Privacy</a></li>
+    <li class="{% if currentPage == 'contact_us_page' %}current-menu-item{% endif %}"><a class="" href="{{ path('app_home') }}">Contact Us</a></li>
 
 </ul>
 {% else %}
@@ -48,7 +48,7 @@
 
     <li>
         <div class="user-view">
-            <a href="{{ path('homepage') }}">
+            <a href="{{ path('app_home') }}">
                 <div class="background">
                     <img alt="sidenav-background" width="150" height="60" loading="lazy" src="{{ asset('img/Pointlocals-Logo.svg') }}">
                 </div>
@@ -61,18 +61,18 @@
         </div>
     </li>
 
-    <li class="cta-menu-item"><a data-target="loginModal" class="modal-trigger add-location-menu-item" href="{{ path('add-location-page') }}"><i class="material-icons">add_location</i>Add Location</a></li>
+    <li class="cta-menu-item"><a data-target="loginModal" class="modal-trigger add-location-menu-item" href="{{ path('app_home') }}"><i class="material-icons">add_location</i>Add Location</a></li>
 
     <li class="login-menu-item {% if user.Id != 0 %}hide{% endif %}"><a class="waves-effect" href="#!"><i class="fas fa-sign-in-alt"></i>Sign In</a></li>
 
     <li class="user-menu-item {% if user.Id == 0 %}hide{% endif %}"><div class="divider"></div></li>
 
     <li class="user-menu-item {% if user.Id == 0 %}hide{% endif %}">
-        <a href="{{ path('my-locations-page') }}"><i class="material-icons">location_city</i>Dashboard</a>
+        <a href="{{ path('app_home') }}"><i class="material-icons">location_city</i>Dashboard</a>
     </li>
 
     <li class="user-menu-item {% if user.Id == 0 %}hide{% endif %}">
-        <a href="{{ path('user-settings') }}"><i class="material-icons">settings</i>Settings</a>
+        <a href="{{ path('app_home') }}"><i class="material-icons">settings</i>Settings</a>
     </li>
 
     <li class="user-menu-item {% if user.Id == 0 %}hide{% endif %} divider"></li>
